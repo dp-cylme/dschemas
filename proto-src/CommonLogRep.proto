@@ -1,0 +1,59 @@
+// Common log representation (format)
+// took from Google
+syntax "proto3";
+
+//see https://cloud.google.com/logging/docs/api/ref_v2beta1/rest/v2beta1/MonitoredResource
+message MonitoredResource {
+        string type = 1;
+        map<string, string> labels = 2;
+}
+
+//see https://cloud.google.com/logging/docs/api/ref_v2beta1/rest/v2beta1/LogEntry
+message LogEntry {
+        string logName = 1;
+        MonitoredResource resource = 2;
+        Timestamp timestamp = 3;
+        LogSeverity severity = 4;
+        HttpRequest httpRequest = 5;
+        map<string, string> labels = 6;
+        LogEntryOperation operation = 7;
+        Struct jsonPayload = 8;
+}
+
+//see https://cloud.google.com/logging/docs/api/ref_v2beta1/rest/v2beta1/LogEntry#LogSeverity
+enum LogSeverity {
+     DEFAULT = 0;
+     DEBUG = 1;
+     INFO = 2;
+     NOTICE = 3;
+     WARNING = 4;
+     ERROR = 5;
+     CRITICAL = 6;
+     ALERT = 7;
+     EMERGENCY = 8;
+}
+
+//see https://cloud.google.com/logging/docs/api/ref_v2beta1/rest/v2beta1/LogEntry#HttpRequest
+message HttpRequest {
+        string requestMethod = 1;
+        string requestUrl = 2;
+        string requestSize = 3;
+        uint32 status = 4;
+        string responseSize = 5;
+        string userAgent = 6;
+        string remoteIp = 7;
+        string serverIp = 8;
+        string referer = 9;
+        bool cacheLookup = 10;
+        bool cacheHit = 11;
+        bool cacheValidateWithOriginServer = 12;
+        string cacheFillBytes = 13;
+}
+
+// https://cloud.google.com/logging/docs/api/ref_v2beta1/rest/v2beta1/LogEntry#LogEntryOperation
+message LogEntryOperation {
+        string id = 1;
+        string producer = 2;
+        bool first = 3;
+        bool last = 4;
+}
