@@ -1,0 +1,11 @@
+syntax = "proto3";
+
+import "CommonLogRep.proto";
+
+message EventLogs {
+    string logName = 1;
+    MonitoredResource resource = 2;
+    map<string, string> labels = 3;
+    repeated LogEntry entries = 4;
+    bool partialSuccess = 5;
+}
