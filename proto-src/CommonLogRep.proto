@@ -2,8 +2,10 @@
 // took from Google
 syntax = "proto3";
 
-import "google/protobuf/timestamp.proto";
-import "google/protobuf/struct.proto";
+package dschemas.protobuf;
+
+import "Timestamp.proto";
+import "Struct.proto";
 
 
 //see https://cloud.google.com/logging/docs/api/ref_v2beta1/rest/v2beta1/MonitoredResource
