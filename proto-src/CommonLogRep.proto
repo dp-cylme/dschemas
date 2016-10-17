@@ -2,6 +2,10 @@
 // took from Google
 syntax = "proto3";
 
+import "google/protobuf/timestamp.proto";
+import "google/protobuf/struct.proto";
+
+
 //see https://cloud.google.com/logging/docs/api/ref_v2beta1/rest/v2beta1/MonitoredResource
 message MonitoredResource {
         string type = 1;
@@ -12,12 +16,12 @@ message MonitoredResource {
 message LogEntry {
         string logName = 1;
         MonitoredResource resource = 2;
-        Timestamp timestamp = 3;
+        google.protobuf.Timestamp timestamp = 3;
         LogSeverity severity = 4;
         HttpRequest httpRequest = 5;
         map<string, string> labels = 6;
         LogEntryOperation operation = 7;
-        Struct jsonPayload = 8;
+        google.protobuf.Struct jsonPayload = 8;
 }
 
 //see https://cloud.google.com/logging/docs/api/ref_v2beta1/rest/v2beta1/LogEntry#LogSeverity
