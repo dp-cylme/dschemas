@@ -1,6 +1,6 @@
 // Common log representation (format)
 // took from Google
-syntax "proto3";
+syntax = "proto3";
 
 //see https://cloud.google.com/logging/docs/api/ref_v2beta1/rest/v2beta1/MonitoredResource
 message MonitoredResource {
